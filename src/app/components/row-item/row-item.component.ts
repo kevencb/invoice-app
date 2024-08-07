@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Item } from '../../models/item';
+import { Item } from './../../models/item';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'tr[app-row-item]',
@@ -10,4 +10,9 @@ import { Item } from '../../models/item';
 })
 export class RowItemComponent {
   @Input() item!: Item
+  @Output() removeItemEventEmitter: EventEmitter<number> = new EventEmitter
+
+  onRemoveItem(id: number){
+    this.removeItemEventEmitter.emit(id)
+  }
 }

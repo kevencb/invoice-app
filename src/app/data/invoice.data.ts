@@ -24,25 +24,26 @@ export const invoiceData: Invoice = {
             id: 1,
             product: "Product 1",
             quantity: 1,
-            price: 100,
+            price: 100
         },
         {
             id: 2,
             product: "Product 2",
             quantity: 2,
-            price: 200,
+            price: 200
         },
         {
             id: 3,
             product: "Product 3",
             quantity: 3,
-            price: 300,
+            price: 300
         },
         {
             id: 4,
             product: "Product 4",
             quantity: 4,
-            price: 400,
+            price: 400
         },
-    ]
+    ],
+    total: 0
 }

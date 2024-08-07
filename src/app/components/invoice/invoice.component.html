@@ -1,12 +1,14 @@
-<div class="w-2/3 mx-auto border rounded-lg overflow-auto my-10 text-slate-600">
+<div class="w-2/3 mx-auto border rounded-lg overflow-auto my-10 text-slate-600 p-6">
 
-    <app-invoice-view [id]="invoice.id" [name]="invoice.name"></app-invoice-view>
+    <app-invoice-view [id]="invoice.id" [name]="invoice.name" />
     
-    <div class="p-6 grid grid-cols-2 justify-between gap-4">
-        <app-client-view [client]="invoice.client" [address]="invoice.client.address"></app-client-view>
-        <app-company-view [id]="invoice.id" [company]="invoice.company"></app-company-view>
+    <div class="px-6 my-8 grid grid-cols-2 justify-between gap-4">
+        <app-client-view [client]="invoice.client" [address]="invoice.client.address" />
+        <app-company-view [id]="invoice.id" [company]="invoice.company" />
     </div>
 
-    <app-list-items [items]="invoice.items"></app-list-items>
+    <app-list-items [items]="invoice.items" (removeItemEventEmitter)="onRemoveItem($event)"/>
     
+    <app-total-invoice [total]="invoice.total"/>
+
 </div>
