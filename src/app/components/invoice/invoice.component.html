@@ -1,59 +1,12 @@
 <div class="w-2/3 mx-auto border rounded-lg overflow-auto my-10 text-slate-600">
-    <div class="py-4 px-6 grid content-center bg-slate-700 text-white h-[96px]">
-        <h2 class="font-bold text-2xl">{{ invoice.name }}</h2>
-    </div>
 
+    <app-invoice-view [id]="invoice.id" [name]="invoice.name"></app-invoice-view>
+    
     <div class="p-6 grid grid-cols-2 justify-between gap-4">
-        <div id="client-info">
-            <p class="text-sm">To:</p>
-            <h2 class="text-lg font-bold uppercase mb-2">{{ invoice.client.name }} {{ invoice.client.lastName }}</h2>
-            <ul class="flex flex-col gap-1 text-xs">
-                <li>
-                    {{ invoice.client.address.street }} {{ invoice.client.address.number }}
-                </li>
-                <li>
-                    {{ invoice.client.address.city }}, {{ invoice.client.address.country }}
-                </li>
-                <li>
-                    <span class="font-bold">Email:</span> {{ invoice.client.email }}
-                </li>
-                <li>
-                    <span class="font-bold">Phone:</span> {{ invoice.client.phone }}
-                </li>
-            </ul>
-        </div>
-        <div id="invoice-info">
-            <h2 class="text-3xl font-light uppercase mb-2">Invoice</h2>
-            <ul class="text-xs">
-                <li>
-                    <span class="font-bold">Invoice No.</span> {{ invoice.id }}
-                </li>
-                <li><span class="font-bold">Account No.</span> {{ invoice.company.fiscalNumber }}</li>
-            </ul>
-        </div>
+        <app-client-view [client]="invoice.client" [address]="invoice.client.address"></app-client-view>
+        <app-company-view [id]="invoice.id" [company]="invoice.company"></app-company-view>
     </div>
 
-    <div id="detail-info" class="px-6 pb-6">
-        <table class="w-full text-sm text-center rtl:text-right text-gray-500 p-6 border">
-            <thead class="text-xs text-gray-50 uppercase bg-slate-600 border border-slate-600">
-                <tr>
-                    <th scope="col" class="px-6 py-3">ID</th>
-                    <th scope="col" class="px-6 py-3">Product</th>
-                    <th scope="col" class="px-6 py-3">Quantity</th>
-                    <th scope="col" class="px-6 py-3">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (item of invoice.items; track $index) {
-                    <tr class="odd:bg-gray-100">
-                        <td class="px-6 py-3">{{ item.id }}</td>
-                        <td class="px-6 py-3">{{ item.product }}</td>
-                        <td class="px-6 py-3">{{ item.quantity }}</td>
-                        <td class="px-6 py-3">{{ item.price }}</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+    <app-list-items [items]="invoice.items"></app-list-items>
+    
 </div>
-
